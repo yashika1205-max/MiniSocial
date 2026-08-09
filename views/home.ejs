@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MiniSocial</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            MiniSocial 🌍
+        </div>
+
+        <a href="/logout" class="logout-btn">
+            Logout
+        </a>
+
+    </nav>
+
+
+    <div class="container">
+
+        <!-- WELCOME -->
+
+        <div class="welcome-card">
+
+            <h2>
+                👋 Welcome, <%= user.name %>
+            </h2>
+
+            <p>
+                Share your thoughts with everyone.
+            </p>
+
+        </div>
+
+
+        <!-- CREATE POST -->
+
+        <div class="post-box">
+
+            <form action="/create-post" method="POST">
+
+                <textarea
+                    name="content"
+                    placeholder="What's on your mind?"
+                    required></textarea>
+
+                <button type="submit">
+                    🚀 Post
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- RECENT POSTS -->
+
+        <h2 class="title">
+            Recent Posts
+        </h2>
+
+
+        <% if (posts.length === 0) { %>
+
+            <div class="empty">
+
+                No posts yet. Be the first to post! 🎉
+
+            </div>
+
+        <% } %>
+
+
+        <!-- ALL POSTS -->
+
+        <% posts.forEach(post => { %>
+
+            <div class="post-card">
+
+
+                <!-- USER -->
+
+                <div class="post-header">
+
+                    <div class="avatar">
+
+                        <%= post.name.charAt(0).toUpperCase() %>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            <%= post.name %>
+                        </h3>
+
+                        <small>
+                            <%= new Date(post.created_at).toLocaleString() %>
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- POST -->
+
+                <p class="content">
+
+                    <%= post.content %>
+
+                </p>
+
+
+                <!-- LIKE -->
+
+                <div class="actions">
+
+                    <form
+                        action="/like/<%= post.id %>"
+                        method="POST">
+
+                        <button type="submit">
+
+                            ❤️ <%= post.likes || 0 %> Like
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- COMMENT FORM -->
+
+                    <form
+                        action="/comment/<%= post.id %>"
+                        method="POST"
+                        class="comment-form">
+
+                        <input
+                            type="text"
+                            name="comment"
+                            placeholder="Write a comment..."
+                            required>
+
+                        <button type="submit">
+
+                            💬 Comment
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- SHOW COMMENTS -->
+
+                <% if (post.comments && post.comments.length > 0) { %>
+
+                    <div class="comments">
+
+                        <h4>
+                            💬 Comments
+                        </h4>
+
+
+                        <% post.comments.forEach(comment => { %>
+
+                            <div class="comment-item">
+
+                                <div class="comment-avatar">
+
+                                    <%= comment.name.charAt(0).toUpperCase() %>
+
+                                </div>
+
+
+                                <div class="comment-content">
+
+                                    <strong>
+                                        <%= comment.name %>
+                                    </strong>
+
+                                    <p>
+                                        <%= comment.comment %>
+                                    </p>
+
+                                    <small>
+                                        <%= new Date(comment.created_at).toLocaleString() %>
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        <% }) %>
+
+                    </div>
+
+                <% } %>
+
+
+            </div>
+
+        <% }) %>
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - MiniSocial</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="auth-info">
+
+            <div class="brand">
+                MiniSocial 🌍
+            </div>
+
+            <h1>
+                Connect.<br>
+                Share.<br>
+                <span>Socialize.</span>
+            </h1>
+
+            <p>
+                A simple place to share your thoughts,
+                connect with people and discover new posts.
+            </p>
+
+            <div class="feature-list">
+
+                <div>❤️ Share your thoughts</div>
+
+                <div>💬 Join conversations</div>
+
+                <div>🌍 Connect with others</div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN CARD -->
+
+        <div class="login-card">
+
+            <div class="login-icon">
+                👋
+            </div>
+
+            <h2>
+                Welcome Back!
+            </h2>
+
+            <p class="login-subtitle">
+                Login to continue to MiniSocial
+            </p>
+
+
+            <form action="/login" method="POST">
+
+                <label>
+                    Email Address
+                </label>
+
+                <div class="input-box">
+
+                    <span>📧</span>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+
+                </div>
+
+
+                <label>
+                    Password
+                </label>
+
+                <div class="input-box">
+
+                    <span>🔒</span>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required>
+
+                </div>
+
+
+                <button type="submit" class="login-btn">
+                    Login 🚀
+                </button>
+
+            </form>
+
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+
+            <p class="register-text">
+                Don't have an account?
+            </p>
+
+            <a href="/register" class="register-btn">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
